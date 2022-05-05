@@ -1,0 +1,8 @@
+@use '/src/styles/constants/colors';
+
+.container {
+  width: 360px;
+  height: 720px;
+  background-color: colors.$MAIN_BACKGROUND;
+  border-radius: 60px;
+}
