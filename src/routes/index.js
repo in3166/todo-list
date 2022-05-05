@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import styles from './Routes.module.scss'
 
+import styles from './Routes.module.scss'
 import MainPage from './mainPage'
 import LoginPage from './loginPage'
 import HistoryPage from './historyPage'
