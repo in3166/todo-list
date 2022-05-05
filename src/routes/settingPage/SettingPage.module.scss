@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: skyblue;
+}
+
+.settingHeader {
+  display: flex;
+  width: 100%;
+  height: 25%;
+  background: beige;
+}
+
+.headerAccount {
+  width: 65%;
+  border: 1px solid blue;
+}
+
+.headerProfilePic {
+  width: 35%;
+  border: 1px solid red;
+}
+
+.profile {
+  width: 90px;
+  height: 90px;
+  background: goldenrod;
+  border-radius: 50%;
+}
+
+.settingInfo {
+  display: flex;
+  width: 100%;
+  height: 40%;
+  background: lightgray;
+}
+
+.settingSave {
+  display: flex;
+  width: 100%;
+  height: 35%;
+  background: lightpink;
+}
