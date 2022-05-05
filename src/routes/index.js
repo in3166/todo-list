@@ -1,13 +1,23 @@
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import styles from './Routes.module.scss'
-import TodoList from './todoList'
-import TodoCategory from './todoCategory'
+
+import MainPage from './mainPage'
+import LoginPage from './loginPage'
+import HistoryPage from './historyPage'
+import SettingPage from './settingPage'
 
 function App() {
   return (
-    <div className={styles.app}>
-      <TodoCategory />
-      <TodoList />
-    </div>
+    <Router>
+      <div className={styles.app}>
+        <Switch>
+          <Route exact path='/' component={MainPage} />
+          <Route exact path='/login' component={LoginPage} />
+          <Route exact path='/history' component={HistoryPage} />
+          <Route exact path='/setting' component={SettingPage} />
+        </Switch>
+      </div>
+    </Router>
   )
 }
 
