@@ -1,0 +1,131 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/position';
+
+.inputModal {
+  @include position.fixed(0 0);
+  width: 360px;
+  height: 720px;
+  margin: 0 auto;
+  background-color: colors.$WHITE;
+  border-radius: 60px;
+}
+
+.input {
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  width: 100%;
+  height: 50px;
+  padding-left: 2px;
+  font-size: 23px;
+  color: colors.$BLACK;
+  caret-color: colors.$BLUE;
+}
+
+.input::placeholder {
+  padding-left: 2px;
+  color: colors.$SUB_TITLE;
+}
+
+.newTaskButton {
+  position: absolute;
+  right: 30px;
+  bottom: 50px;
+  width: 180px;
+  height: 55px;
+  font-size: 15px;
+  line-height: 55px;
+  color: colors.$WHITE;
+  background-color: colors.$BUTTON;
+  border-radius: 40px;
+  box-shadow: colors.$BLUE 0 20px 20px -20px;
+}
+
+.newTaskButtonText {
+}
+
+.newTaskArrowUpIcon {
+}
+
+.closeButton {
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  line-height: 12px;
+  border: 2px solid colors.$GRAYD;
+  border-radius: 50%;
+}
+
+.datePicker {
+  position: absolute;
+  top: 45%;
+  left: 10%;
+  width: 140px;
+  padding: 10px;
+  background-color: colors.$WHITE;
+  border: 2px solid colors.$GRAYD;
+  border-radius: 60px;
+}
+
+.expirationDate {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 600;
+  color: colors.$SUB_TITLE;
+}
+
+.categoryWrapper {
+  position: absolute;
+  top: 45%;
+  right: 35%;
+  width: 50px;
+}
+
+.categoryButton {
+  width: 45px;
+  height: 45px;
+  background-color: colors.$WHITE;
+  border: 2px solid colors.$GRAYD;
+  border-radius: 50%;
+
+  &.business {
+    color: colors.$CATEGORY_BUSINESS;
+  }
+
+  &.personal {
+    color: colors.$CATEGORY_PERSONAL;
+  }
+
+  &.health {
+    color: colors.$CATEGORY_HEALTH;
+  }
+
+  &.hobby {
+    color: colors.$CATEGORY_HOBBY;
+  }
+}
+
+.categoryDropdown {
+  position: absolute;
+  // top: 30px;
+  z-index: -10;
+  width: 100px;
+  padding: 10px;
+  border: 2px solid colors.$GRAYD;
+  border-radius: 0 15px 15px;
+
+  li {
+    width: 100%;
+    height: 40px;
+    margin-top: 1px;
+    line-height: 40px;
+
+    button {
+      width: 100%;
+      font-size: 15px;
+      color: colors.$SUB_TITLE;
+    }
+  }
+}
