@@ -1,7 +1,9 @@
-import Container from '../../components/Container'
+import TodoCategory from '../todoCategory'
 
 function MainPage() {
-  return <Container>MainPage</Container>
+  return (
+    <TodoCategory />
+  )
 }
 
 export default MainPage

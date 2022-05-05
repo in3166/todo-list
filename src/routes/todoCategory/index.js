@@ -1,9 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './TodoCategory.module.scss'
-
+import classNames from 'classnames/bind'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
-const categoryList = [
+const cx = classNames.bind(styles)
+
+const TOTAL_SLIDES = 3
+
+const CATE_LIST = [
   {
     id: 1,
     category: 'all',
@@ -11,7 +15,7 @@ const categoryList = [
   },
   {
     id: 2,
-    category: 'work',
+    category: 'business',
     text: '일',
   },
   {
@@ -31,13 +35,12 @@ const categoryList = [
   },
 ]
 
-const TOTAL_SLIDES = 2
 
 function TodoCategory () {
   const [currentCate, setCate] = useState('all')
-  
-  const catesRef = useRef()
   const [currentIndex, setIndex] = useState(0)
+  const [isShow, setBtn] = useState(false)
+  const catesRef = useRef()
 
   const handleClickCate = (e) => {
     const { dataset } = e.currentTarget
@@ -61,39 +64,42 @@ function TodoCategory () {
     } 
   }
 
-  
+  const handleShowBtn = () => {
+    setBtn((prev) => !prev)
+  }
+
   useEffect(() => {
-    catesRef.current.style.transform = `translate(-${currentIndex * 18}0px )`
+    catesRef.current.style.transform = `translateX(-${currentIndex * 13}0px)`
   },[currentIndex])
 
   return (
     <div className={styles.todoCategory}>
       <h3>Cateogories</h3>
-      <div className={styles.cateWrap} >
-        <button type='button' className={styles.arrowBtn} onClick={handlePrev}>
+      <div className={styles.cateWrap} onMouseEnter={handleShowBtn} onMouseLeave={handleShowBtn}>
+        <button type='button' className={cx(!isShow? 'arrowBtn' : ['arrowBtn', 'show'])} onClick={handlePrev}>
           <FaArrowLeft/>
         </button>
-        <button type='button' className={styles.arrowBtn} onClick={handleNext}>
+        <button type='button' className={cx(!isShow? 'arrowBtn' : ['arrowBtn', 'show'])} onClick={handleNext}>
           <FaArrowRight />
         </button>
-        
         <ul className={styles.categoryList} ref={catesRef}>
-          {categoryList.map((cate) => (
+          {CATE_LIST.map((cate) => (
             <li key={`category-${cate.id}`} className={styles.category}>
               <button className={styles.cateBtn} type='button' data-category={cate.category}  onClick={handleClickCate}> 
-                <span className={styles.cateRange}>
-                  12 tasks
+                <span className={styles.cateTasks}>
                   {/* 수정 필요 */}
+                  12 tasks
                 </span>
                 <span className={styles.cateTitle}>{cate.text}</span>
+                <div className={cx(['taskProgress', `${cate.category}`])}>
+                  {/* 수정 필요 */}
+                </div>
               </button>
             </li>
           ))}
         </ul>
       </div>
-      <div className={`${currentCate}-wrapper`}>
-        <p>{currentCate}</p>
-      </div>
+      <p>{currentCate}</p>      
     </div>
   )
 }
