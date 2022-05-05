@@ -1,41 +1,51 @@
 import { useState } from 'react'
 import styles from './SettingPage.module.scss'
+import Button from './Components/Button'
+import LightSpeed from 'react-reveal/LightSpeed'
 
 function SettingPage() {
+  const [userId, setUserId] = useState('iamchho')
   const [username, setUsername] = useState('Chiho Lee')
 
   return (
     <div className={styles.container}>
-      <div className={styles.settingHeader}>
-        <div className={styles.headerAccount}>
-          <h1>Account</h1>
-          <p>Hello, {username}</p>
+      <LightSpeed right cascade>
+        <div className={styles.settingHeader}>
+          <header>
+            <h1>계정 설정</h1>
+            <p>{username}</p>
+          </header>
+          <div>
+            <div className={styles.profile} />
+          </div>
         </div>
-        <div className={styles.headerProfilePic}>
-          <div className={styles.profile}>.</div>
-        </div>
-      </div>
 
-      <div className={styles.settingInfo}>
-        <div className={styles.headerAccount}>
-          <h1>Username</h1>
-          <p>{username}</p>
-        </div>
-        <div className={styles.headerProfilePic}>
-          <button type='button'>변경</button>
-        </div>
-      </div>
+        <div className={styles.settingInfo}>
+          <header>
+            <h1>유저 아이디</h1>
+            <p>{userId}</p>
 
-      <div className={styles.settingSave}>
-        <div className={styles.headerAccount}>
-          <h1>Log out</h1>
-          <p>You may log out before leaving the app.</p>
-          <button type='button'>Save Changes</button>
+            <h1 className={styles.usernameHeader}>유저 이름</h1>
+            <p>{username}</p>
+          </header>
+          <div>
+            <Button>변경</Button>
+          </div>
         </div>
-        <div className={styles.headerProfilePic}>
-          <button type='button'>Log out</button>
+
+        <div className={styles.settingSave}>
+          <header>
+            <p>
+              안전한 Todo 관리를 위해 <br /> <br />
+              로그아웃을 해주세요.
+            </p>
+            <Button>저장 후 나가기</Button>
+          </header>
+          <div>
+            <Button>로그아웃</Button>
+          </div>
         </div>
-      </div>
+      </LightSpeed>
     </div>
   )
 }
