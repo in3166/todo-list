@@ -72,7 +72,7 @@ function TodoCategory () {
   },[currentIndex])
 
   return (
-    <section id={styles.todoCategory}>
+    <section className={styles.todoCategory}>
       <h3>Cateogories</h3>
       <div className={styles.cateWrap} onMouseEnter={handleShowBtn} onMouseLeave={handleShowBtn}>
         <button type='button' className={cx(styles.arrowBtn, {[styles.show] : isShow})} onClick={handlePrev}>
