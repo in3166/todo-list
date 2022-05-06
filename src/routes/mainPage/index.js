@@ -7,17 +7,11 @@ import { CgEditBlackPoint } from 'react-icons/cg'
 import styles from './MainPage.module.scss'
 import buttonStyles from './components/RoundButton.module.scss'
 import RoundButton from './components/RoundButton'
-import InputModal from './components/InputModal'
 
 const cx = classNames.bind(buttonStyles)
 
 function MainPage() {
-  return (
-    <>
-      <FloatButton />
-      <InputModal />
-    </>
-  )
+  return <FloatButton />
 }
 
 function FloatButton() {
