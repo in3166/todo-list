@@ -36,7 +36,7 @@ function InputModal() {
         category: selectedCategory,
         completed: false,
         expiry_date: expirationDate,
-        complete_date: null,
+        completed_date: null,
       }
 
       getTaskArr
