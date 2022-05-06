@@ -1,7 +1,5 @@
-import Container from '../../components/Container'
-
 function MainPage() {
-  return <Container>MainPage</Container>
+  return <div>MainPage</div>
 }
 
 export default MainPage
