@@ -45,10 +45,6 @@
     // "max-lines": ["warn", 150],
     "no-param-reassign": ["error", { "props": false }],
     "no-use-before-define": "off",
-<<<<<<< HEAD
-=======
-
->>>>>>> upstream/develop
     "no-shadow": "off",
     "no-unused-expressions": ["warn"],
     "prefer-const": ["warn"],
