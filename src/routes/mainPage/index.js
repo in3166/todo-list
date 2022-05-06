@@ -6,7 +6,7 @@ import { CgEditBlackPoint } from 'react-icons/cg'
 
 import styles from './MainPage.module.scss'
 import buttonStyles from './components/Button.module.scss'
-import Button from './components/Button'
+import RoundButton from './components/RoundButton'
 
 const cx = classNames.bind(buttonStyles)
 
@@ -32,24 +32,24 @@ function FloatButton() {
   return (
     <nav>
       <span className={styles.circularMenu}>
-        <Button
+        <RoundButton
           onClick={handleAddClick}
           className={cx(menuOpen ? 'addButtonOpen' : 'addButton')}
           aria-label='Add button'
         >
           <AiOutlinePlus size='2em' />
-        </Button>
-        <Button
+        </RoundButton>
+        <RoundButton
           onClick={handleEditClick}
           className={cx(menuOpen ? 'editButtonOpen' : 'editButton')}
           aria-label='Edit button'
         >
           <MdModeEditOutline size='1.3em' />
-        </Button>
+        </RoundButton>
       </span>
-      <Button onClick={handleOpenClick} className={buttonStyles.openButton} aria-label='Open button'>
+      <RoundButton onClick={handleOpenClick} className={buttonStyles.openButton} aria-label='Open button'>
         <CgEditBlackPoint size='1.5em' />
-      </Button>
+      </RoundButton>
     </nav>
   )
 }
