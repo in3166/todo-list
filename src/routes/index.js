@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className={styles.app}>
-        <Container >
+        <Container>
           <Switch>
             <Route exact path='/' component={MainPage} />
             <Route exact path='/login' component={LoginPage} />
