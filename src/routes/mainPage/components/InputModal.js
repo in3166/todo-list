@@ -12,24 +12,13 @@ function InputModal() {
   const [taskTitle, setTaskTitle] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('business')
-  const [taskId, setTaskId] = useState(0)
 
   const [taskvalid, setTaskvalid] = useState(false)
   const [expirationvalid, setExpirationvalid] = useState(false)
 
-  const [taskArray, setTaskArray] = useState([])
-
   const handleGetValue = (e) => {
     e.currentTarget.value && setExpirationvalid(false)
     setExpirationDate(e.currentTarget.value)
-  }
-  const taskObj = {
-    id: taskId,
-    task: taskTitle,
-    category: selectedCategory,
-    completed: false,
-    expiry_date: expirationDate,
-    complete_date: null,
   }
 
   const handleSetTask = () => {
@@ -38,11 +27,21 @@ function InputModal() {
     } else if (!expirationDate) {
       setExpirationvalid(true)
     } else {
-      localStorage.setItem('task', JSON.stringify([...taskArray, taskObj]))
-      setTaskArray([...taskArray, taskObj])
       const getTask = localStorage.getItem('task')
-      const setId = JSON.parse(getTask).length + 1
-      setTaskId(setId)
+      const getTaskArr = JSON.parse(getTask)
+      const taskId = getTaskArr ? getTaskArr.length + 1 : 1
+      const taskObj = {
+        id: taskId,
+        task: taskTitle,
+        category: selectedCategory,
+        completed: false,
+        expiry_date: expirationDate,
+        complete_date: null,
+      }
+
+      getTaskArr
+        ? localStorage.setItem('task', JSON.stringify([...getTaskArr, taskObj]))
+        : localStorage.setItem('task', JSON.stringify([taskObj]))
 
       setTaskTitle('')
       setExpirationDate('')
