@@ -2,16 +2,19 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './SettingPage.module.scss'
 import Button from './Components/Button'
-import Modal from './Components/Modal'
 import LightSpeed from 'react-reveal/LightSpeed'
 
 function SettingPage() {
   const [userId, setUserId] = useState('iamchho')
   const [username, setUsername] = useState('Chiho Lee')
-  const [modalOpen, setModalOpen] = useState(false)
+  const [changeName, setChangeName] = useState(false)
 
-  const handleModalOpen = () => {
-    setModalOpen(!modalOpen)
+  const handleChange = () => {
+    setChangeName(!changeName)
+  }
+
+  const handleChangeUsername = (e) => {
+    setUsername(e.currentTarget.value)
   }
 
   return (
@@ -29,14 +32,17 @@ function SettingPage() {
 
         <div className={styles.settingInfo}>
           <header>
-            <h1>유저 아이디</h1>
+            <h1>유저 이름</h1>
+            {changeName ? (
+              <input type='text' placeholder='name' value={username} onChange={handleChangeUsername} />
+            ) : (
+              <p>{username}</p>
+            )}
+            <h1 className={styles.usernameHeader}>유저 아이디</h1>
             <p>{userId}</p>
-
-            <h1 className={styles.usernameHeader}>유저 이름</h1>
-            <p>{username}</p>
           </header>
           <div>
-            <Button handleModalOpen={handleModalOpen}>변경</Button>
+            <Button handleChangeName={handleChange}>{changeName ? '저장' : '변경'}</Button>
           </div>
         </div>
 
@@ -57,8 +63,6 @@ function SettingPage() {
           </div>
         </div>
       </LightSpeed>
-
-      {modalOpen && <Modal handleModalOpen={handleModalOpen} />}
     </div>
   )
 }

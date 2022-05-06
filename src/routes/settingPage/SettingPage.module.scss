@@ -81,6 +81,14 @@
       font-weight: bold;
       color: colors.$TASK_ITEM_TITLE;
     }
+
+    input {
+      width: 100px;
+      color: colors.$BIG_TITLE;
+      border: 0;
+      border-bottom: 2px solid #9b9b9b;
+      outline: 0;
+    }
   }
 
   div {
