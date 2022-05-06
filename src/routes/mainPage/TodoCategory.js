@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './TodoCategory.module.scss'
-import classNames from 'classnames/bind'
+import cx from 'classnames'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
-const cx = classNames.bind(styles)
+
 
 const CATE_LIST = [
   {
@@ -90,7 +90,7 @@ function TodoCategory () {
                   12 tasks
                 </span>
                 <span className={styles.cateTitle}>{cate.text}</span>
-                <div className={cx(styles.taskProgress, styles[`${cate.category}`])}>
+                <div className={cx(styles.taskProgress, styles[cate.category])}>
                   {/* 수정 필요 */}
                 </div>
               </button>
