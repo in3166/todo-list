@@ -16,9 +16,19 @@ function InputModal() {
   const [taskvalid, setTaskvalid] = useState(false)
   const [expirationvalid, setExpirationvalid] = useState(false)
 
+  const [taskArray, setTaskArray] = useState([])
+
   const handleGetValue = (e) => {
     e.currentTarget.value && setExpirationvalid(false)
     setExpirationDate(e.currentTarget.value)
+  }
+  const taskObj = {
+    id: taskId,
+    task: taskTitle,
+    category: selectedCategory,
+    completed: false,
+    expiry_date: expirationDate,
+    complete_date: null,
   }
 
   const handleSetTask = () => {
@@ -27,16 +37,12 @@ function InputModal() {
     } else if (!expirationDate) {
       setExpirationvalid(true)
     } else {
-      setTaskId((prev) => prev + 1)
-      const taskObj = {
-        id: taskId,
-        task: taskTitle,
-        category: selectedCategory,
-        completed: false,
-        expiry_date: expirationDate,
-        complete_date: null,
-      }
-      window.localStorage.setItem(`task-${taskId}`, JSON.stringify(taskObj))
+      localStorage.setItem('task', JSON.stringify([...taskArray, taskObj]))
+      setTaskArray([...taskArray, taskObj])
+      const getTask = localStorage.getItem('task')
+      const setId = JSON.parse(getTask).length + 1
+      setTaskId(setId)
+
       setTaskTitle('')
       setExpirationDate('')
       setSelectedCategory('business')
