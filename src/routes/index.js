@@ -1,5 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+<<<<<<< HEAD
 import styles from './Routes.module.scss'
+=======
+
+import styles from './Routes.module.scss'
+import Container from '../components/Container'
+>>>>>>> 7fa9941c54020d4949790907792988c6c2911381
 import MainPage from './mainPage'
 import LoginPage from './loginPage'
 import HistoryPage from './historyPage'
