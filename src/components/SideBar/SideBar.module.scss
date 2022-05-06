@@ -1,4 +1,5 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
 
 .container {
   position: absolute;
@@ -13,7 +14,6 @@
   color: colors.$WHITE;
   background-color: colors.$SIDE_BACKGROUND;
   border-radius: 60px;
-  // transform: translateX(-200px);
 }
 
 .topSection {
@@ -21,13 +21,10 @@
   width: 200px;
   height: 100px;
   margin-bottom: 30px;
-  // border: 1px solid colors.$WHITE;
 }
 
 .closeButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexbox.flexbox(center, center);
   width: 50px;
   height: 50px;
   margin-right: 10px;
@@ -62,7 +59,6 @@
 .menuItem {
   display: flex;
   align-items: center;
-  // justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -83,5 +79,4 @@
   width: 200px;
   height: 100px;
   letter-spacing: 0.5px;
-  // border: 1px solid white;
 }
