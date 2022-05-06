@@ -1,6 +1,6 @@
 @use '/src/styles/constants/colors';
 
-.todoCategory {
+#todoCategory {
   margin: 30px 0;
   
   h3 {
@@ -16,6 +16,7 @@
     width: inherit;
     overflow-x: hidden;
     margin-bottom: 15px;
+    padding-bottom: 10px;
 
     .arrowBtn {
       display: flex;
@@ -79,43 +80,48 @@
         &:active {
           transform: scale(0.95);
         }
-      }
-  
-      .cateTasks {
-        font-size: 12px;
-        margin-bottom: 15px;
-        font-weight: 600;
-        color: colors.$SUB_TITLE;
-      }
-  
-      .cateTitle {
-        font-size: 17px;
-        color: colors.$TASK_ITEM_TITLE;
-        font-weight: 600;
-        margin-bottom: 15px;
-      }
 
-      .taskProgress {
-        width: 100%;
-        height: 7px;
-        border-radius: 10px;
-        
-        &.all {
-          background-color: rgba(colors.$CATEGORY_ALL, 35%);
+        &.isActive {
+          background: rgba(colors.$OUTSIDE_BACKGROUND, 30%);
+          box-shadow: rgba(149, 157, 165, 0.3) 1px 3px 5px;
         }
-        &.business {
-          background-color: rgba(colors.$CATEGORY_BUSINESS, 35%);
+  
+        .cateTasks {
+          font-size: 12px;
+          margin-bottom: 15px;
+          font-weight: 600;
+          color: colors.$SUB_TITLE;
         }
-        &.health {
-          background-color: rgba(colors.$CATEGORY_PERSONAL, 35%);
+    
+        .cateTitle {
+          font-size: 17px;
+          color: colors.$TASK_ITEM_TITLE;
+          font-weight: 600;
+          margin-bottom: 15px;
         }
-        &.personal {
-          background-color: rgba(colors.$CATEGORY_HEALTH, 35%);
+
+        .taskProgress {
+          width: 100%;
+          height: 7px;
+          border-radius: 10px;
+          
+          &.all {
+            background-color: rgba(colors.$CATEGORY_ALL, 35%);
+          }
+          &.business {
+            background-color: rgba(colors.$CATEGORY_BUSINESS, 35%);
+          }
+          &.health {
+            background-color: rgba(colors.$CATEGORY_PERSONAL, 35%);
+          }
+          &.personal {
+            background-color: rgba(colors.$CATEGORY_HEALTH, 35%);
+          }
+          &.hobby {
+            background-color: rgba(colors.$CATEGORY_HOBBY, 35%);
+          }
+          
         }
-        &.hobby {
-          background-color: rgba(colors.$CATEGORY_HOBBY, 35%);
-        }
-        
       }
     }
 

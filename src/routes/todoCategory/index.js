@@ -5,8 +5,6 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 const cx = classNames.bind(styles)
 
-const TOTAL_SLIDES = 3
-
 const CATE_LIST = [
   {
     id: 1,
@@ -35,6 +33,7 @@ const CATE_LIST = [
   },
 ]
 
+const TOTAL_SLIDES = 3
 
 function TodoCategory () {
   const [currentCate, setCate] = useState('all')
@@ -73,25 +72,25 @@ function TodoCategory () {
   },[currentIndex])
 
   return (
-    <div className={styles.todoCategory}>
+    <section id={styles.todoCategory}>
       <h3>Cateogories</h3>
       <div className={styles.cateWrap} onMouseEnter={handleShowBtn} onMouseLeave={handleShowBtn}>
-        <button type='button' className={cx(!isShow? 'arrowBtn' : ['arrowBtn', 'show'])} onClick={handlePrev}>
+        <button type='button' className={cx(styles.arrowBtn, {[styles.show] : isShow})} onClick={handlePrev}>
           <FaArrowLeft/>
         </button>
-        <button type='button' className={cx(!isShow? 'arrowBtn' : ['arrowBtn', 'show'])} onClick={handleNext}>
+        <button type='button' className={cx(styles.arrowBtn, {[styles.show] : isShow})} onClick={handleNext}>
           <FaArrowRight />
         </button>
         <ul className={styles.categoryList} ref={catesRef}>
-          {CATE_LIST.map((cate) => (
-            <li key={`category-${cate.id}`} className={styles.category}>
+          {CATE_LIST.map((cate) => (    
+            <li key={`category-${cate.id}`} className ={cx(styles.category, {[styles.isActive] : cate.category ===  currentCate})}>
               <button className={styles.cateBtn} type='button' data-category={cate.category}  onClick={handleClickCate}> 
                 <span className={styles.cateTasks}>
                   {/* 수정 필요 */}
                   12 tasks
                 </span>
                 <span className={styles.cateTitle}>{cate.text}</span>
-                <div className={cx(['taskProgress', `${cate.category}`])}>
+                <div className={cx(styles.taskProgress, styles[`${cate.category}`])}>
                   {/* 수정 필요 */}
                 </div>
               </button>
@@ -99,8 +98,11 @@ function TodoCategory () {
           ))}
         </ul>
       </div>
-      <p>{currentCate}</p>      
-    </div>
+      <p>
+        {/* category 값 */}
+        {currentCate}
+      </p>     
+    </section>
   )
 }
 export default TodoCategory
