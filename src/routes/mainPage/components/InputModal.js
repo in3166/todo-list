@@ -2,10 +2,9 @@ import { useState } from 'react'
 import styles from './InputModal.module.scss'
 import { FiX, FiChevronUp } from 'react-icons/fi'
 import { IoMdRadioButtonOn } from 'react-icons/io'
-import classNames from 'classnames/bind'
+import { cx } from '../../../styles'
 
 const CATEGORY = ['BUSINESS', 'PERSONAL', 'HEALTH', 'HOBBY']
-const cx = classNames.bind(styles)
 
 function InputModal() {
   const [expirationDate, setExpirationDate] = useState('')
@@ -14,36 +13,48 @@ function InputModal() {
   const [selectedCategory, setSelectedCategory] = useState('BUSINESS')
   const [taskId, setTaskId] = useState(0)
 
+  const [taskvalid, setTaskvalid] = useState(false)
+  const [expirationvalid, setExpirationvalid] = useState(false)
+
   const handleGetValue = (e) => {
+    e.currentTarget.value && setExpirationvalid(false)
     setExpirationDate(e.currentTarget.value)
   }
 
   const handleSetTask = () => {
-    setTaskId(taskId + 1)
-    const taskObj = {
-      id: taskId,
-      task: taskTitle,
-      category: selectedCategory,
-      completed: false,
-      expiry_date: expirationDate,
-      complete_date: null,
+    if (!taskTitle) {
+      setTaskvalid(true)
+    } else if (!expirationDate) {
+      setExpirationvalid(true)
+    } else {
+      setTaskId((prev) => prev + 1)
+      const taskObj = {
+        id: taskId,
+        task: taskTitle,
+        category: selectedCategory,
+        completed: false,
+        expiry_date: expirationDate,
+        complete_date: null,
+      }
+      window.localStorage.setItem(`task-${taskId}`, JSON.stringify(taskObj))
+      setTaskTitle('')
+      setExpirationDate('')
+      setSelectedCategory('BUSINESS')
     }
-    window.localStorage.setItem(`task${taskId}`, JSON.stringify(taskObj))
   }
 
   const onChangeTask = (e) => {
+    e.currentTarget.value && setTaskvalid(false)
     setTaskTitle(e.currentTarget.value)
   }
 
-  const toggleDropdown = (e) => {
+  const toggleDropdown = () => {
     setShowDropdown((prev) => !prev)
-    console.log(e.currentTarget)
   }
 
   const handleSelectedCategory = (e) => {
     setSelectedCategory(e.currentTarget.dataset.category)
     setShowDropdown((prev) => !prev)
-    console.log(e.target)
   }
 
   return (
@@ -51,26 +62,37 @@ function InputModal() {
       <button className={styles.closeButton} type='button'>
         <FiX size='20' />
       </button>
-      <input
-        className={styles.input}
-        type='text'
-        value={taskTitle}
-        placeholder='Enter new task'
-        onChange={onChangeTask}
-      />
 
-      <button className={styles.datePicker} type='button'>
-        <input className={styles.expirationDate} type='date' value={expirationDate} onChange={handleGetValue} />
-      </button>
+      <div className={styles.inputWrapper}>
+        <input
+          className={styles.input}
+          type='text'
+          value={taskTitle}
+          placeholder='Enter new task'
+          onChange={onChangeTask}
+        />
+        {taskvalid && <div className={styles.taskvalidMessage}>내용을 입력해주세요.</div>}
+      </div>
 
-      <button className={styles.newTaskButton} type='submit' onClick={handleSetTask}>
-        <span className={styles.newTaskButtonText}>New task</span>
-        <span className={styles.newTaskArrowUpIcon}>
-          <FiChevronUp size='20' />
-        </span>
-      </button>
+      <div className={styles.datePickerWrapper}>
+        <button className={styles.datePicker} type='button'>
+          <input className={styles.expirationDate} type='date' value={expirationDate} onChange={handleGetValue} />
+        </button>
+        {expirationvalid && <div className={styles.expirationvalidMessage}>만료일을 설정해주세요.</div>}
+      </div>
+
       <div className={styles.categoryWrapper}>
-        <button type='button' className={cx('categoryButton', selectedCategory.toLowerCase())} onClick={toggleDropdown}>
+        <button
+          type='button'
+          className={cx(
+            styles.categoryButton,
+            { [styles.business]: selectedCategory === 'BUSINESS' },
+            { [styles.personal]: selectedCategory === 'PERSONAL' },
+            { [styles.health]: selectedCategory === 'HEALTH' },
+            { [styles.hobby]: selectedCategory === 'HOBBY' }
+          )}
+          onClick={toggleDropdown}
+        >
           <IoMdRadioButtonOn size='25' />
         </button>
         {showDropdown && (
@@ -87,6 +109,12 @@ function InputModal() {
           </ul>
         )}
       </div>
+      <button className={styles.newTaskButton} type='submit' onClick={handleSetTask}>
+        <span className={styles.newTaskButtonText}>New task</span>
+        <span className={styles.newTaskArrowUpIcon}>
+          <FiChevronUp size='20' />
+        </span>
+      </button>
     </div>
   )
 }
