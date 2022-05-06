@@ -1,11 +1,18 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './SettingPage.module.scss'
 import Button from './Components/Button'
+import Modal from './Components/Modal'
 import LightSpeed from 'react-reveal/LightSpeed'
 
 function SettingPage() {
   const [userId, setUserId] = useState('iamchho')
   const [username, setUsername] = useState('Chiho Lee')
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleModalOpen = () => {
+    setModalOpen(!modalOpen)
+  }
 
   return (
     <div className={styles.container}>
@@ -29,7 +36,7 @@ function SettingPage() {
             <p>{username}</p>
           </header>
           <div>
-            <Button>변경</Button>
+            <Button handleModalOpen={handleModalOpen}>변경</Button>
           </div>
         </div>
 
@@ -39,13 +46,19 @@ function SettingPage() {
               안전한 Todo 관리를 위해 <br /> <br />
               로그아웃을 해주세요.
             </p>
-            <Button>저장 후 나가기</Button>
+            <Link to='/' target='_top'>
+              <Button>저장 후 나가기</Button>
+            </Link>
           </header>
           <div>
-            <Button>로그아웃</Button>
+            <Link to='/login' target='_top'>
+              <Button>로그아웃</Button>
+            </Link>
           </div>
         </div>
       </LightSpeed>
+
+      {modalOpen && <Modal handleModalOpen={handleModalOpen} />}
     </div>
   )
 }

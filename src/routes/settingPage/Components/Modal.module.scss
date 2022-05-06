@@ -1,0 +1,19 @@
+@import '../../../styles/mixins/position';
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 360px;
+  height: 720px;
+  background: rgba(36, 21, 21, 80%);
+}
+
+.modalBox {
+  width: 360px;
+  height: 200px;
+  background: white;
+  @include posCenter;
+}
