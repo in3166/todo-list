@@ -47,12 +47,38 @@
 
       .title {
         width: 75%;
-        margin: 0 0 0 40px;
+        margin: 0 10px;
         overflow: hidden;
         line-height: normal;
         color: colors.$TASK_ITEM_TITLE;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+
+      .categoryIcon {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+
+        .business {
+          color: colors.$CATEGORY_BUSINESS;
+        }
+
+        .personal {
+          color: colors.$CATEGORY_PERSONAL;
+        }
+
+        .health {
+          color: colors.$CATEGORY_HEALTH;
+        }
+
+        .hobby {
+          color: colors.$CATEGORY_HOBBY;
+        }
+
+        .all {
+          color: colors.$CATEGORY_ALL;
+        }
       }
 
       .deleteIcon {
