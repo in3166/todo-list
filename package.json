@@ -6,13 +6,8 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
-    "moment": "^2.29.3",
-    "prop-types": "^15.8.1",
-    "react-router-dom": "^5.2.0",
-=======
->>>>>>> 3675f6e71d3896b37ac9afb0dfe127912b1034e8
     "classnames": "^2.3.1",
+    "moment": "^2.29.3",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-calendar": "^3.7.0",

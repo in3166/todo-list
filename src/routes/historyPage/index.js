@@ -1,8 +1,10 @@
-import Grass from "./grass"
+import React, { useState } from 'react'
+import CalendarForm from "./CalendarForm"
 import FinishedTasks from './FinishedTasks'
 import styles from './HistoryPage.module.scss'
 
 function HistoryPage() {
+  const [value, setValue] = useState(new Date())
   return (
     <div className={styles.historyPage}>
       <div className={styles.leftAlign}>
@@ -11,11 +13,11 @@ function HistoryPage() {
       <div className={styles.leftAlign}>
         <h2>ANALYSIS</h2>
       </div>
-      <Grass/>
+      <CalendarForm setValue={setValue} value={value}/>
       <div className={styles.leftAlign}>
         <h2>FINISHED TASKS</h2>
       </div>
-      <FinishedTasks />
+      <FinishedTasks value={value}/>
     </div>
   )
 }
