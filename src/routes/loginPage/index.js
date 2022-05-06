@@ -9,7 +9,11 @@ function LoginPage() {
   const [password, setPassword] = useState('')
   const [isPasswordView, setIsPasswordView] = useState(false)
 
-  const passwordViewIcon = isPasswordView ? <FaRegEye size={15} /> : <FaRegEyeSlash size={15} />
+  const passwordViewIcon = isPasswordView ? (
+    <FaRegEye className={styles.passwordIcon} />
+  ) : (
+    <FaRegEyeSlash className={styles.passwordIcon} />
+  )
 
   const history = useHistory()
 
@@ -44,7 +48,7 @@ function LoginPage() {
         <div className={styles.inputBox}>
           <input
             placeholder='비밀번호를 입력하시오'
-            type={!isPasswordView && 'password'}
+            type={!isPasswordView ? 'password' : ''}
             value={password}
             onChange={onChangePW}
           />
