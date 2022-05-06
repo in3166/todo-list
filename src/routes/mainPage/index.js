@@ -5,7 +5,7 @@ import { MdModeEditOutline } from 'react-icons/md'
 import { CgEditBlackPoint } from 'react-icons/cg'
 
 import styles from './MainPage.module.scss'
-import buttonStyles from './components/Button.module.scss'
+import buttonStyles from './components/RoundButton.module.scss'
 import RoundButton from './components/RoundButton'
 
 const cx = classNames.bind(buttonStyles)
