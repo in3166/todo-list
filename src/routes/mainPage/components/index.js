@@ -68,7 +68,6 @@ function InputModal() {
       <button className={styles.closeButton} type='button'>
         <FiX size='20' />
       </button>
-
       <div className={styles.inputWrapper}>
         <input
           className={styles.input}
@@ -79,14 +78,12 @@ function InputModal() {
         />
         {taskvalid && <div className={styles.taskvalidMessage}>내용을 입력해주세요.</div>}
       </div>
-
       <div className={styles.datePickerWrapper}>
         <button className={styles.datePicker} type='button'>
           <input className={styles.expirationDate} type='date' value={expirationDate} onChange={handleGetValue} />
         </button>
         {expirationvalid && <div className={styles.expirationvalidMessage}>만료일을 설정해주세요.</div>}
       </div>
-
       <div className={styles.categoryWrapper}>
         <button
           type='button'
@@ -115,6 +112,7 @@ function InputModal() {
           </ul>
         )}
       </div>
+
       <button className={styles.newTaskButton} type='submit' onClick={handleSetTask}>
         <span className={styles.newTaskButtonText}>New task</span>
         <span className={styles.newTaskArrowUpIcon}>

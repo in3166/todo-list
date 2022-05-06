@@ -1,4 +1,4 @@
-import InputModal from './components/InputModal'
+import InputModal from './components/index'
 
 function MainPage() {
   return <InputModal />
