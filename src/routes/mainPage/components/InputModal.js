@@ -91,17 +91,7 @@ function InputModal() {
         {expirationvalid && <div className={styles.expirationvalidMessage}>만료일을 설정해주세요.</div>}
       </div>
       <div className={styles.categoryWrapper}>
-        <button
-          type='button'
-          className={cx(
-            styles.categoryButton,
-            { [styles.business]: selectedCategory === 'business' },
-            { [styles.personal]: selectedCategory === 'personal' },
-            { [styles.health]: selectedCategory === 'health' },
-            { [styles.hobby]: selectedCategory === 'hobby' }
-          )}
-          onClick={toggleDropdown}
-        >
+        <button type='button' className={cx(styles.categoryButton, styles[selectedCategory])} onClick={toggleDropdown}>
           <IoMdRadioButtonOn size='25' />
         </button>
         {showDropdown && (
