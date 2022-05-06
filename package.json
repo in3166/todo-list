@@ -40,8 +40,6 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "@typescript-eslint/parser": "^5.22.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.14.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -64,7 +62,6 @@
     "stylelint": "^14.8.1",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard-scss": "^3.0.0",
-    "stylelint-declaration-strict-value": "^1.8.0",
-    "typescript": "^4.6.4"
+    "stylelint-declaration-strict-value": "^1.8.0"
   }
 }
