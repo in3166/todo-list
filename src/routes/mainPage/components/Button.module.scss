@@ -43,17 +43,19 @@
   opacity: 0;
 }
 
-.addButtonOpen {
+@mixin buttonOpen {
   position: absolute;
   display: inline;
   opacity: 1;
+}
+
+.addButtonOpen {
+  @include buttonOpen;
   transform: translateY(-70px);
 }
 
 .editButtonOpen {
-  position: absolute;
+  @include buttonOpen;
   top: 0;
-  display: inline;
-  opacity: 1;
   transform: translateX(-70px);
 }
