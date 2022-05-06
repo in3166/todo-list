@@ -5,6 +5,7 @@ import { IoMdRadioButtonOn } from 'react-icons/io'
 import { cx } from '../../../styles'
 
 const CATEGORY = ['business', 'personal', 'health', 'hobby']
+const today = new Date().toISOString().split('T')[0]
 
 function InputModal() {
   const [expirationDate, setExpirationDate] = useState('')
@@ -80,7 +81,13 @@ function InputModal() {
       </div>
       <div className={styles.datePickerWrapper}>
         <button className={styles.datePicker} type='button'>
-          <input className={styles.expirationDate} type='date' value={expirationDate} onChange={handleGetValue} />
+          <input
+            className={styles.expirationDate}
+            type='date'
+            value={expirationDate}
+            onChange={handleGetValue}
+            min={today}
+          />
         </button>
         {expirationvalid && <div className={styles.expirationvalidMessage}>만료일을 설정해주세요.</div>}
       </div>
