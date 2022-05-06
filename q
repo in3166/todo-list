@@ -1,0 +1,132 @@
+[33mcommit d186689b2987f89e55214d3e7340675c3057535f[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/floatButton[m[33m, [m[1;31morigin/feature/floatButton[m[33m)[m
+Author: in3166 <in3166@naver.com>
+Date:   Fri May 6 12:08:45 2022 +0900
+
+    :sparkles: Button 컴포넌트 추가, :lipstick: Button UI 완성, :ambulance: Container PropTypes 수정
+
+[33mcommit 6d60e34d43b1424df9a2d44a76c6ace177c54a04[m
+Author: in3166 <in3166@naver.com>
+Date:   Fri May 6 11:58:41 2022 +0900
+
+    :lipstick: Container position 추가, :memo: Conatiner 이동
+
+[33mcommit 46725b994c8e6054e96c8291d5d2a556b89bbdbc[m
+Author: in3166 <in3166@naver.com>
+Date:   Fri May 6 11:47:56 2022 +0900
+
+    :heavy_plus_sign: classnames 라이브러리 추가, :heavy_plus_sign: react-icons 라이브러리 추가
+
+[33mcommit 1d0a8706a6955c802c45a9b638bde726c8eb4391[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Merge: 00d6fd7 71133d8
+Author: Yu <in3166@naver.com>
+Date:   Thu May 5 16:56:13 2022 +0900
+
+    Merge branch 'POB-Frontend-4th-6team:develop' into develop
+
+[33mcommit 71133d82c569e469987758942640948588037604[m
+Merge: 18a14a4 96c1dc2
+Author: Seohyun Roh <76952602+Seohyun-Roh@users.noreply.github.com>
+Date:   Thu May 5 14:57:21 2022 +0900
+
+    Merge pull request #6 from Seohyun-Roh/develop
+    
+    파일 구조 생성
+
+[33mcommit 96c1dc2eb4d4b0f3516cfb425c8639794e5b7274[m
+Author: Seohyun Roh <radult951@gmail.com>
+Date:   Thu May 5 14:47:35 2022 +0900
+
+    :lipstick: Container padding 추가
+
+[33mcommit 5e823733a5d0e73a2b3062b4a7f6f3fad4d9a789[m
+Author: Seohyun Roh <radult951@gmail.com>
+Date:   Thu May 5 14:18:03 2022 +0900
+
+    :wrench: 파일 구조 설정
+
+[33mcommit d79514ff2419fbe1418f6a75b8ae4051910b0812[m
+Merge: 98709df 18a14a4
+Author: Seohyun Roh <radult951@gmail.com>
+Date:   Thu May 5 13:52:11 2022 +0900
+
+    Merge branch 'develop' of https://github.com/POB-Frontend-4th-6team/todo-list into develop
+
+[33mcommit 18a14a4abf5f23afe86c3cc8ec2c93476bebe161[m
+Author: 김학률 <52916848+markyul@users.noreply.github.com>
+Date:   Thu May 5 13:48:07 2022 +0900
+
+    add pull request template
+
+[33mcommit 98709df99db186ef52dd05bb53ebc8740db5dcdd[m
+Merge: 5c8824c 240c128
+Author: Seohyun Roh <radult951@gmail.com>
+Date:   Thu May 5 11:01:22 2022 +0900
+
+    Merge branch 'develop' of https://github.com/POB-Frontend-4th-6team/todo-list into develop
+
+[33mcommit 00d6fd751b0834e3bd236bdaefc4222357d84ee3[m
+Merge: 4904c19 240c128
+Author: Yu <in3166@naver.com>
+Date:   Wed May 4 21:15:05 2022 +0900
+
+    Merge branch 'POB-Frontend-4th-6team:develop' into develop
+
+[33mcommit 240c1287d49192e3fb61363ffb4e75f592fbc2ed[m
+Merge: be90883 8df2ceb
+Author: 김학률 <52916848+markyul@users.noreply.github.com>
+Date:   Wed May 4 18:17:23 2022 +0900
+
+    Merge pull request #5 from markyul/feature/configColor
+    
+    :memo: styles의 color 상수 추가
+
+[33mcommit 8df2ceb367d415541a3d3ae0449dbb8cca613e72[m
+Author: markyul <pig68111000@gmail.com>
+Date:   Wed May 4 17:38:34 2022 +0900
+
+    :memo:styles의 color 상수 추가
+
+[33mcommit 4904c196b58bd84b90982a5e0ec8abab12dc5d9d[m
+Author: Yu <in3166@naver.com>
+Date:   Wed May 4 17:27:26 2022 +0900
+
+    Update README.md
+
+[33mcommit 38077301bfe92c7c768b3db514a156f0cca7b040[m
+Author: Yu <in3166@naver.com>
+Date:   Wed May 4 17:27:02 2022 +0900
+
+    Update README.md
+
+[33mcommit 5c8824c771ee0068022ae4672d4e86b0f0ccc1a9[m
+Author: Seohyun Roh <radult951@gmail.com>
+Date:   Wed May 4 17:16:25 2022 +0900
+
+    :heavy_plus_sign: react-router-dom
+
+[33mcommit be908839b4ff45e898e630c452421eda623a94d9[m
+Merge: 0f77c4b 4bcfaaa
+Author: 김학률 <52916848+markyul@users.noreply.github.com>
+Date:   Wed May 4 12:11:11 2022 +0900
+
+    Merge pull request #1 from markyul/fix/gitignore
+    
+    gitignore 수정
+
+[33mcommit 4bcfaaaa3c957792e38acd782b7bd16295d8f7f7[m
+Author: markyul <pig68111000@gmail.com>
+Date:   Wed May 4 11:49:17 2022 +0900
+
+    gitignore 수정
+
+[33mcommit 0f77c4bdaa22647145589500e1bbc49f7448b801[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: markyul <pig68111000@gmail.com>
+Date:   Wed May 4 11:15:14 2022 +0900
+
+    init
+
+[33mcommit b9417993040ba6ead2ad995d4817f40724144aa1[m
+Author: markyul <pig68111000@gmail.com>
+Date:   Wed May 4 10:21:28 2022 +0900
+
+    Initialize project using Create React App

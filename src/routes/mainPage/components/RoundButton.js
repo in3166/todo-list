@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
-import styles from './Button.module.scss'
+import styles from './RoundButton.module.scss'
 
-function Button({ children, onClick, className }) {
+function RoundButton({ children, onClick, className }) {
   return (
     <button type='button' onClick={onClick} className={`${styles.roundButton} ${className}`}>
       {children}
@@ -9,10 +9,10 @@ function Button({ children, onClick, className }) {
   )
 }
 
-Button.propTypes = {
+RoundButton.propTypes = {
   children: PropTypes.node,
   onClick: PropTypes.func,
   className: PropTypes.string,
 }
 
-export default Button
+export default RoundButton
