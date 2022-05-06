@@ -4,13 +4,13 @@ import { FiX, FiChevronUp } from 'react-icons/fi'
 import { IoMdRadioButtonOn } from 'react-icons/io'
 import { cx } from '../../../styles'
 
-const CATEGORY = ['BUSINESS', 'PERSONAL', 'HEALTH', 'HOBBY']
+const CATEGORY = ['business', 'personal', 'health', 'hobby']
 
 function InputModal() {
   const [expirationDate, setExpirationDate] = useState('')
   const [taskTitle, setTaskTitle] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState('BUSINESS')
+  const [selectedCategory, setSelectedCategory] = useState('business')
   const [taskId, setTaskId] = useState(0)
 
   const [taskvalid, setTaskvalid] = useState(false)
@@ -39,7 +39,7 @@ function InputModal() {
       window.localStorage.setItem(`task-${taskId}`, JSON.stringify(taskObj))
       setTaskTitle('')
       setExpirationDate('')
-      setSelectedCategory('BUSINESS')
+      setSelectedCategory('business')
     }
   }
 
@@ -86,10 +86,10 @@ function InputModal() {
           type='button'
           className={cx(
             styles.categoryButton,
-            { [styles.business]: selectedCategory === 'BUSINESS' },
-            { [styles.personal]: selectedCategory === 'PERSONAL' },
-            { [styles.health]: selectedCategory === 'HEALTH' },
-            { [styles.hobby]: selectedCategory === 'HOBBY' }
+            { [styles.business]: selectedCategory === 'business' },
+            { [styles.personal]: selectedCategory === 'personal' },
+            { [styles.health]: selectedCategory === 'health' },
+            { [styles.hobby]: selectedCategory === 'hobby' }
           )}
           onClick={toggleDropdown}
         >

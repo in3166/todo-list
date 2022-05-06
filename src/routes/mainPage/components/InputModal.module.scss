@@ -13,9 +13,7 @@
 }
 
 .inputWrapper {
-  position: absolute;
-  top: 35%;
-  left: 10%;
+  @include position.absolute(35% auto auto 10%);
 }
 
 .input {
@@ -43,9 +41,7 @@
 }
 
 .closeButton {
-  position: absolute;
-  top: 50px;
-  right: 30px;
+  @include position.absolute(50px 30px auto auto);
   width: 45px;
   height: 45px;
   line-height: 50%;
@@ -83,9 +79,7 @@
 }
 
 .categoryWrapper {
-  position: absolute;
-  top: 50%;
-  right: 35%;
+  @include position.absolute(50% 35% auto auto);
   width: 50px;
 }
 
@@ -115,7 +109,7 @@
 }
 
 .categoryDropdown {
-  position: absolute;
+  @include position.absolute(auto);
   width: 100px;
   padding: 10px;
   border: 2px solid colors.$GRAYE;
@@ -136,9 +130,7 @@
 }
 
 .newTaskButton {
-  position: absolute;
-  right: 30px;
-  bottom: 50px;
+  @include position.absolute(auto 30px 50px auto);
   display: flex;
   justify-content: space-around;
   width: 160px;
