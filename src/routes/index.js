@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
 import styles from './Routes.module.scss'
 import Container from '../components/Container'
 import MainPage from './mainPage'

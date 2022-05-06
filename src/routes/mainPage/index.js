@@ -1,4 +1,4 @@
-import TodoCategory from '../todoCategory'
+import TodoCategory from './TodoCategory'
 
 function MainPage() {
   return (
