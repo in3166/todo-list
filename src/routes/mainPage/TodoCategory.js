@@ -38,7 +38,6 @@ const TOTAL_SLIDES = 3
 function TodoCategory () {
   const [currentCate, setCate] = useState('all')
   const [currentIndex, setIndex] = useState(0)
-  const [isShow, setBtn] = useState(false)
   const catesRef = useRef()
 
   const handleClickCate = (e) => {
@@ -63,9 +62,6 @@ function TodoCategory () {
     } 
   }
 
-  const handleShowBtn = () => {
-    setBtn((prev) => !prev)
-  }
 
   useEffect(() => {
     catesRef.current.style.transform = `translateX(-${currentIndex * 13}0px)`
@@ -74,11 +70,11 @@ function TodoCategory () {
   return (
     <section className={styles.todoCategory}>
       <h3>Cateogories</h3>
-      <div className={styles.cateWrap} onMouseEnter={handleShowBtn} onMouseLeave={handleShowBtn}>
-        <button type='button' className={cx(styles.arrowBtn, {[styles.show] : isShow})} onClick={handlePrev}>
+      <div className={styles.cateWrap}>
+        <button type='button' className={styles.arrowBtn} onClick={handlePrev}>
           <FaArrowLeft/>
         </button>
-        <button type='button' className={cx(styles.arrowBtn, {[styles.show] : isShow})} onClick={handleNext}>
+        <button type='button' className={styles.arrowBtn} onClick={handleNext}>
           <FaArrowRight />
         </button>
         <ul className={styles.categoryList} ref={catesRef}>

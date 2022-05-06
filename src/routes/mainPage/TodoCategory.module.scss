@@ -43,12 +43,7 @@
       
       svg {
         color: colors.$SUB_TITLE;
-      }
-
-      &.show {
-        opacity: 1;
-        transform: translateY(-50%) scale(1);
-      }     
+      }  
       
     }
 
@@ -125,6 +120,10 @@
       }
     }
 
+    &:hover .arrowBtn{
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
   }
 
   
