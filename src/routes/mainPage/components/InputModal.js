@@ -47,6 +47,7 @@ function InputModal({ isVisible, handleModalVisible }) {
       setTaskTitle('')
       setExpirationDate('')
       setSelectedCategory('business')
+      handleModalVisible(false)
     }
   }
 
@@ -69,7 +70,7 @@ function InputModal({ isVisible, handleModalVisible }) {
   }
 
   return (
-    <div className={cx(styles.inputModal, { [styles.open]:  isVisible })}>
+    <div className={cx(styles.inputModal, { [styles.open]: isVisible })}>
       <button className={styles.closeButton} type='button' onClick={handleModalClose}>
         <FiX size='20' />
       </button>
