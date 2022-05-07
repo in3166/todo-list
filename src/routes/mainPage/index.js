@@ -3,15 +3,23 @@ import classNames from 'classnames/bind'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { MdModeEditOutline } from 'react-icons/md'
 import { CgEditBlackPoint } from 'react-icons/cg'
-
+import TodoCategory from './TodoCategory'
 import styles from './MainPage.module.scss'
 import buttonStyles from './components/RoundButton.module.scss'
 import RoundButton from './components/RoundButton'
+import Header from '../../components/Header/Header'
 
 const cx = classNames.bind(buttonStyles)
 
 function MainPage() {
-  return <FloatButton />
+  return (
+    <>
+      <Header />
+      <p className={styles.greeting}>안녕하세요 JOY 님.</p>
+      <TodoCategory />
+      <FloatButton />
+    </>
+  )
 }
 
 function FloatButton() {
