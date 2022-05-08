@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { cx } from '../../../styles'
 // import { FaCheckCircle } from 'react-icons/fa'
 import { memo } from 'react'
-import {BsTrash} from 'react-icons/bs'
+import { BsTrash } from 'react-icons/bs'
 
-function Todo({ id, task, category, completed, onClick, deleteTask }) {
+function Todo({ id, task, category, completed, onClick, deleteTask, onClickEditList, taskObj }) {
   const handleClick = () => {
     onClick(id, completed)
   }
@@ -27,10 +27,12 @@ function Todo({ id, task, category, completed, onClick, deleteTask }) {
       </div>
       {/* <div className={cx(styles.taskMessage, { [styles.taskMessageCompleted]: completed })}>{task}</div> */}
       <div className={styles.taskMessageBox}>
-        <div className={styles.taskMessage}>
-          {task}
-          {completed && <div className={styles.taskMessageLine} />}
-        </div>
+        <button type='button' onClick={() => onClickEditList(taskObj)}>
+          <div className={styles.taskMessage}>
+            {task}
+            {completed && <div className={styles.taskMessageLine} />}
+          </div>
+        </button>
       </div>
       <BsTrash className={styles.deleteIcon} onClick={handleDeleteIconClick} />
     </li>
@@ -43,7 +45,16 @@ Todo.propTypes = {
   category: PropTypes.string,
   completed: PropTypes.bool,
   onClick: PropTypes.func,
-  deleteTask: PropTypes.func
+  deleteTask: PropTypes.func,
+  onClickEditList: PropTypes.func,
+  taskObj: PropTypes.shape({
+    id: PropTypes.number,
+    task: PropTypes.string,
+    category: PropTypes.string,
+    completed: PropTypes.bool,
+    expiry_date: PropTypes.string,
+    complete_data: PropTypes.string,
+  }),
 }
 
 export default memo(Todo)

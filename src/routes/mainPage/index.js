@@ -17,8 +17,14 @@ import { useUserStore } from '../../store/UserContext'
 
 function MainPage() {
   const [currentCate, setCate] = useState('all')
-  const [modalVisible, setmodalVisible] = useState(false)
   const [taskState, setTaskState] = useState([])
+  console.log('taskState', taskState)
+  const [modalVisible, setmodalVisible] = useState({ isEdit: false, isVisible: false })
+  const [selectedTask, setselectedTask] = useState(null)
+
+  const handleEditClick = () => {
+    setmodalVisible({ isEdit: true, isVisible: false })
+  }
 
   const { user } = useUserStore()
 
@@ -37,16 +43,28 @@ function MainPage() {
             modalVisible={modalVisible}
             taskState={taskState}
             setTaskState={setTaskState}
+            setselectedTask={setselectedTask}
+            setmodalVisible={setmodalVisible}
           />
         </div>
-        <FloatButton handleOpenAddModal={setmodalVisible} />
-        <InputModal isVisible={modalVisible} handleModalVisible={setmodalVisible} />
+        <FloatButton setmodalVisible={setmodalVisible} handleEditClick={handleEditClick} />
+
+        {modalVisible.isVisible && (
+          <InputModal
+            modalVisible={modalVisible}
+            handleModalVisible={setmodalVisible}
+            selectedTask={selectedTask}
+            taskState={taskState}
+            setTaskState={setTaskState}
+            setselectedTask={setselectedTask}
+          />
+        )}
       </div>
     </>
   )
 }
 
-function FloatButton({ handleOpenAddModal }) {
+function FloatButton({ setmodalVisible }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const buttonMenuRef = useRef(null)
 
@@ -55,12 +73,13 @@ function FloatButton({ handleOpenAddModal }) {
   }
 
   const handleAddClick = () => {
-    setMenuOpen((prev) => !prev)
-    handleOpenAddModal(true)
+    setMenuOpen(false)
+    setmodalVisible({ isEdit: false, isVisible: true })
   }
 
   const handleEditClick = () => {
-    setMenuOpen((prev) => !prev)
+    setMenuOpen(false)
+    setmodalVisible({ isEdit: true, isVisible: false })
   }
 
   useEffect(() => {
@@ -106,7 +125,7 @@ function FloatButton({ handleOpenAddModal }) {
 }
 
 FloatButton.propTypes = {
-  handleOpenAddModal: PropTypes.func,
+  setmodalVisible: PropTypes.func,
 }
 
 export default MainPage

@@ -8,11 +8,13 @@ import PropTypes from 'prop-types'
 const CATEGORY = ['business', 'personal', 'health', 'hobby']
 const today = new Date().toISOString().split('T')[0]
 
-function InputModal({ isVisible, handleModalVisible }) {
-  const [expirationDate, setExpirationDate] = useState('')
-  const [taskTitle, setTaskTitle] = useState('')
+function InputModal({ modalVisible, handleModalVisible, taskState, selectedTask, setTaskState, setselectedTask }) {
+  const [expirationDate, setExpirationDate] = useState(
+    selectedTask?.expiry_date ? new Date(selectedTask.expiry_date).toISOString().slice(0, 10) : ''
+  )
+  const [taskTitle, setTaskTitle] = useState(selectedTask?.task ? selectedTask.task : '')
   const [showDropdown, setShowDropdown] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState('business')
+  const [selectedCategory, setSelectedCategory] = useState(selectedTask?.category ? selectedTask.category : 'business')
 
   const [taskvalid, setTaskvalid] = useState(false)
   const [expirationvalid, setExpirationvalid] = useState(false)
@@ -23,9 +25,9 @@ function InputModal({ isVisible, handleModalVisible }) {
   }
 
   const getLastId = (taskArr) => {
-    const lastTask = taskArr[taskArr.length-1]
-    if(!lastTask)return 0
-    return lastTask.id +1
+    const lastTask = taskArr[taskArr.length - 1]
+    if (!lastTask) return 0
+    return lastTask.id + 1
   }
   const handleSetTask = () => {
     if (!taskTitle) {
@@ -35,7 +37,7 @@ function InputModal({ isVisible, handleModalVisible }) {
     } else {
       const getTask = localStorage.getItem('task')
       const getTaskArr = JSON.parse(getTask)
-      const taskId = getLastId(getTaskArr)+1
+      const taskId = getLastId(getTaskArr) + 1
       const taskObj = {
         id: taskId,
         task: taskTitle,
@@ -52,7 +54,7 @@ function InputModal({ isVisible, handleModalVisible }) {
       setTaskTitle('')
       setExpirationDate('')
       setSelectedCategory('business')
-      handleModalVisible(false)
+      handleModalVisible({ isEdit: false, isVisible: false })
     }
   }
 
@@ -71,13 +73,49 @@ function InputModal({ isVisible, handleModalVisible }) {
   }
 
   const handleModalClose = () => {
-    handleModalVisible(false)
+    handleModalVisible((prev) => {
+      return { isEdit: false, isVisible: false }
+    })
     setShowDropdown(false)
     setSelectedCategory('business')
   }
 
+  const hadleEditClick = (e) => {
+    const taskObj = {
+      id: selectedTask.id,
+      task: taskTitle,
+      category: selectedCategory,
+      completed: false,
+      expiry_date: expirationDate,
+      completed_date: null,
+    }
+
+    const findTaskIndex = taskState.findIndex((value) => value.id === selectedTask.id)
+    const localStorageTasks = JSON.parse(localStorage.getItem('task'))
+    const newTasksIndex = localStorageTasks.findIndex((task) => task.id === selectedTask.id)
+
+    localStorageTasks[newTasksIndex].task = taskTitle
+    localStorageTasks[newTasksIndex].category = selectedCategory
+    localStorageTasks[newTasksIndex].expiry_date = expirationDate
+
+    localStorage.clear()
+    localStorage.setItem('task', JSON.stringify(localStorageTasks))
+
+    setTaskState((prev) => {
+      prev[findTaskIndex].task = taskTitle
+      prev[findTaskIndex].category = selectedCategory
+      prev[findTaskIndex].expiry_date = expirationDate
+      return [...prev]
+    })
+    setselectedTask(null)
+    setTaskTitle('')
+    setExpirationDate('')
+    setSelectedCategory('business')
+    handleModalVisible({ isEdit: false, isVisible: false })
+  }
+
   return (
-    <div className={cx(styles.inputModal, { [styles.open]: isVisible })}>
+    <div className={cx(styles.inputModal, { [styles.open]: modalVisible.isVisible })}>
       <button className={styles.closeButton} type='button' onClick={handleModalClose}>
         <FiX size='20' />
       </button>
@@ -125,18 +163,53 @@ function InputModal({ isVisible, handleModalVisible }) {
         )}
       </div>
 
-      <button className={styles.newTaskButton} type='submit' onClick={handleSetTask}>
-        <span className={styles.newTaskButtonText}>New task</span>
-        <span className={styles.newTaskArrowUpIcon}>
-          <FiChevronUp size='20' />
-        </span>
-      </button>
+      {!modalVisible?.isEdit && (
+        <button className={styles.newTaskButton} type='submit' onClick={handleSetTask}>
+          <span className={styles.newTaskButtonText}>New task</span>
+          <span className={styles.newTaskArrowUpIcon}>
+            <FiChevronUp size='20' />
+          </span>
+        </button>
+      )}
+      {modalVisible?.isEdit && (
+        <button className={styles.newTaskButton} type='submit' onClick={hadleEditClick}>
+          <span className={styles.newTaskButtonText}>Edit task</span>
+          <span className={styles.newTaskArrowUpIcon}>
+            <FiChevronUp size='20' />
+          </span>
+        </button>
+      )}
     </div>
   )
 }
 
 InputModal.propTypes = {
-  isVisible: PropTypes.bool,
   handleModalVisible: PropTypes.func,
+  setTaskState: PropTypes.func,
+  setselectedTask: PropTypes.func,
+  taskState: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      task: PropTypes.string,
+      category: PropTypes.string,
+      completed: PropTypes.bool,
+      expiry_date: PropTypes.string,
+      complete_data: PropTypes.string,
+    })
+  ),
+  selectedTask: PropTypes.shape({
+    id: PropTypes.number,
+    task: PropTypes.string,
+    category: PropTypes.string,
+    completed: PropTypes.bool,
+    expiry_date: PropTypes.string,
+    complete_data: PropTypes.string,
+  }),
+  modalVisible: PropTypes.shape({
+    id: PropTypes.string,
+    isVisible: PropTypes.bool,
+    isEdit: PropTypes.bool,
+  }),
 }
+
 export default InputModal
