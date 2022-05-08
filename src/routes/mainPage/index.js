@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
-import { cx } from '../../styles/index'
-import { AiOutlinePlus } from 'react-icons/ai'
-import { MdModeEditOutline } from 'react-icons/md'
-import { CgEditBlackPoint } from 'react-icons/cg'
 
 import PropTypes from 'prop-types'
+import { AiOutlinePlus } from 'react-icons/ai'
+// import { MdModeEditOutline } from 'react-icons/md'
+import { CgEditBlackPoint } from 'react-icons/cg'
 
 import styles from './MainPage.module.scss'
+import { cx } from '../../styles/index'
 import buttonStyles from './components/RoundButton.module.scss'
 import RoundButton from './components/RoundButton'
 import TodoList from './todoList/TodoList'
-import TodoCategory from './TodoCategory'
+import TodoCategory from './todoCategory/TodoCategory'
 import Header from '../../components/Header/Header'
 import InputModal from './components/InputModal'
 import { useUserStore } from '../../store/UserContext'
@@ -59,9 +59,9 @@ function FloatButton({ handleOpenAddModal }) {
     handleOpenAddModal(true)
   }
 
-  const handleEditClick = () => {
-    setMenuOpen((prev) => !prev)
-  }
+  // const handleEditClick = () => {
+  //   setMenuOpen((prev) => !prev)
+  // }
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -86,13 +86,13 @@ function FloatButton({ handleOpenAddModal }) {
         >
           <AiOutlinePlus size='2em' />
         </RoundButton>
-        <RoundButton
+        {/* <RoundButton
           onClick={handleEditClick}
           className={cx({ [buttonStyles.editButtonOpen]: menuOpen }, { [buttonStyles.hideButton]: !menuOpen })}
           aria-label='Edit button'
         >
           <MdModeEditOutline size='1.3em' />
-        </RoundButton>
+        </RoundButton> */}
       </span>
       <RoundButton
         onClick={handleOpenClick}
