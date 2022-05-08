@@ -12,7 +12,6 @@ import TodoList from './todoList/TodoList'
 import TodoCategory from './TodoCategory'
 import Header from '../../components/Header/Header'
 import InputModal from './components/InputModal'
-import TodoList from './todoList/TodoList'
 
 function MainPage() {
   const [currentCate, setCate] = useState('all')
