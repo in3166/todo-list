@@ -1,69 +1,99 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './SettingPage.module.scss'
 import Button from './Components/Button'
 import LightSpeed from 'react-reveal/LightSpeed'
+import avatar from './Components/Avatars/avatar1.png'
+import Header from '../../components/Header/Header'
+import { BsCalendarCheck } from 'react-icons/bs'
+import { useUserStore } from '../../store/UserContext'
 
 function SettingPage() {
-  const [userId, setUserId] = useState('iamchho')
-  const [username, setUsername] = useState('Chiho Lee')
+  const { user, dispatch } = useUserStore()
+
+  const [userId, setUserId] = useState('')
+  const [username, setUsername] = useState('')
   const [changeName, setChangeName] = useState(false)
 
+  useEffect(() => {
+    if (user) {
+      setUserId((prevId) => user.id)
+      setUsername((prevUsername) => user.name)
+    }
+  }, [user])
+
   const handleChange = () => {
-    setChangeName(!changeName)
+    setChangeName((prev) => !changeName)
   }
 
   const handleChangeUsername = (e) => {
-    setUsername(e.currentTarget.value)
+    setUsername((prev) => e.target.value)
+  }
+
+  const handleSaveUsername = () => {
+    dispatch({ type: 'CHAMGE_USER', id: userId, name: username })
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    dispatch({ type: 'REMOVE_USER' })
   }
 
   return (
-    <div className={styles.container}>
-      <LightSpeed right cascade>
-        <div className={styles.settingHeader}>
-          <header>
-            <h1>계정 설정</h1>
-            <p>{username}</p>
-          </header>
-          <div>
-            <div className={styles.profile} />
-          </div>
-        </div>
-
-        <div className={styles.settingInfo}>
-          <header>
-            <h1>유저 이름</h1>
-            {changeName ? (
-              <input type='text' placeholder='name' value={username} onChange={handleChangeUsername} />
-            ) : (
+    <>
+      <Header />
+      <div className={styles.container}>
+        <LightSpeed right cascade>
+          <div className={styles.settingHeader}>
+            <header>
+              <h1>Account</h1>
               <p>{username}</p>
-            )}
-            <h1 className={styles.usernameHeader}>유저 아이디</h1>
-            <p>{userId}</p>
-          </header>
-          <div>
-            <Button handleChangeName={handleChange}>{changeName ? '저장' : '변경'}</Button>
+            </header>
+            <img src={avatar} alt='Profile' className={styles.profile} />
           </div>
-        </div>
 
-        <div className={styles.settingSave}>
-          <header>
-            <p>
-              안전한 Todo 관리를 위해 <br /> <br />
-              로그아웃을 해주세요.
-            </p>
-            <Link to='/' target='_top'>
-              <Button>저장 후 나가기</Button>
-            </Link>
-          </header>
-          <div>
-            <Link to='/login' target='_top'>
-              <Button>로그아웃</Button>
-            </Link>
+          <div className={styles.settingInfo}>
+            <header>
+              <h1>Username</h1>
+              {changeName ? (
+                <input type='text' placeholder='name' value={username} onChange={handleChangeUsername} />
+              ) : (
+                <p>{username}</p>
+              )}
+              <h1 className={styles.usernameHeader}>User ID</h1>
+              <p>{userId}</p>
+
+              <Link to='/history'>
+                <h2 className={styles.historyContainer}>
+                  <BsCalendarCheck className={styles.calendarIcon} />
+                  Check Consistency
+                </h2>
+              </Link>
+            </header>
+            <div>
+              <Button handler={handleChange}>{changeName ? 'Save' : 'Change'}</Button>
+            </div>
           </div>
-        </div>
-      </LightSpeed>
-    </div>
+
+          <div className={styles.settingSave}>
+            <header>
+              <p>
+                For <span>safe use</span> of App, <br /> <br />
+                Please log out.
+              </p>
+              <Link to='/'>
+                <Button handler={handleSaveUsername}>Save and Exit</Button>
+              </Link>
+            </header>
+            <div>
+              <Link to='/login'>
+                <Button handler={handleLogout}>Log out</Button>
+              </Link>
+            </div>
+          </div>
+        </LightSpeed>
+      </div>
+    </>
   )
 }
 
