@@ -10,7 +10,6 @@
   padding: 40px 0;
   overflow: auto;
   background-color: none;
-  border-radius: 60px;
 
   .leftAlign {
     width: 100%;
@@ -25,7 +24,7 @@
   }
 
   h2 {
-    margin: 40px 0 20px;
+    margin: 20px 0 10px;
     font-size: sizes.$SUB_TITLE;
     color: colors.$SUB_TITLE;
   }
