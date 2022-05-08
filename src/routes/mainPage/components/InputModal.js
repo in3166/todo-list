@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import styles from './InputModal.module.scss'
+
+import PropTypes from 'prop-types'
 import { FiX, FiChevronUp } from 'react-icons/fi'
 import { IoMdRadioButtonOn } from 'react-icons/io'
+
+import styles from './InputModal.module.scss'
 import { cx } from '../../../styles'
-import PropTypes from 'prop-types'
 
 const CATEGORY = ['business', 'personal', 'health', 'hobby']
 const today = new Date().toISOString().split('T')[0]
@@ -37,7 +39,7 @@ function InputModal({ modalVisible, handleModalVisible, taskState, selectedTask,
     } else {
       const getTask = localStorage.getItem('task')
       const getTaskArr = JSON.parse(getTask)
-      const taskId = getLastId(getTaskArr) + 1
+      const taskId = getLastId(getTaskArr)
       const taskObj = {
         id: taskId,
         task: taskTitle,
@@ -81,15 +83,6 @@ function InputModal({ modalVisible, handleModalVisible, taskState, selectedTask,
   }
 
   const hadleEditClick = (e) => {
-    const taskObj = {
-      id: selectedTask.id,
-      task: taskTitle,
-      category: selectedCategory,
-      completed: false,
-      expiry_date: expirationDate,
-      completed_date: null,
-    }
-
     const findTaskIndex = taskState.findIndex((value) => value.id === selectedTask.id)
     const localStorageTasks = JSON.parse(localStorage.getItem('task'))
     const newTasksIndex = localStorageTasks.findIndex((task) => task.id === selectedTask.id)

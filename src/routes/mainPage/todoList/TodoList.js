@@ -1,7 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
-import Todo from './Todo'
-import styles from './TodoList.module.scss'
+import { useCallback, useEffect } from 'react'
+
 import PropTypes from 'prop-types'
+
+import styles from './TodoList.module.scss'
+import Todo from './Todo'
 
 const nowDate = new Date().toISOString().slice(0, 10)
 
@@ -12,7 +14,7 @@ function TodoList({ currentCate, modalVisible, taskState, setTaskState, setmodal
     data =
       localStorage.getItem('task') === null
         ? []
-        : JSON.parse(data).filter((task) => new Date(task.expiry_date) > new Date(nowDate))
+        : JSON.parse(data).filter((task) => new Date(task.expiry_date) >= new Date(nowDate))
 
     localStorage.removeItem('task')
     localStorage.setItem('task', JSON.stringify(data))
