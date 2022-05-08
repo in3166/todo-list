@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
-import styles from './TodoCategory.module.scss'
+
 import PropTypes from 'prop-types'
-import cx from 'classnames'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
+
+import styles from './TodoCategory.module.scss'
+import { cx } from '../../../styles'
 
 const CATE_LIST = [
   {
@@ -66,9 +68,9 @@ function TodoCategory({ currentCate, setCate, tasks }) {
     )
     setHealth(task.filter((item) => item.category === 'health').length)
     setHeCompleted(() =>
-      heCompleted === 0
+      healthTask === 0
         ? 0
-        : (task.filter((item) => item.category === 'bhealthusiness' && item.completed).length / healthTask) * 100
+        : (task.filter((item) => item.category === 'health' && item.completed).length / healthTask) * 100
     )
     setPersonal(task.filter((item) => item.category === 'personal').length)
     setPerCompleted(() =>
@@ -80,7 +82,7 @@ function TodoCategory({ currentCate, setCate, tasks }) {
     setHobCompleted(() =>
       hobbyTask === 0
         ? 0
-        : (task.filter((item) => item.category === 'personal' && item.completed).length / hobbyTask) * 100
+        : (task.filter((item) => item.category === 'hobby' && item.completed).length / hobbyTask) * 100
     )
   }, [tasks, allTask, businessTask, heCompleted, healthTask, hobbyTask, personalTask, task])
 

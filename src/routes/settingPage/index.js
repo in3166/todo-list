@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
+
 import { Link } from 'react-router-dom'
+import LightSpeed from 'react-reveal/LightSpeed'
+import { BsCalendarCheck } from 'react-icons/bs'
+
 import styles from './SettingPage.module.scss'
 import Button from './Components/Button'
-import LightSpeed from 'react-reveal/LightSpeed'
 import avatar from './Components/Avatars/avatar1.png'
 import Header from '../../components/Header/Header'
-import { BsCalendarCheck } from 'react-icons/bs'
 import { useUserStore } from '../../store/UserContext'
 
 function SettingPage() {
@@ -17,17 +19,17 @@ function SettingPage() {
 
   useEffect(() => {
     if (user) {
-      setUserId((prevId) => user.id)
-      setUsername((prevUsername) => user.name)
+      setUserId(user.id)
+      setUsername(user.name)
     }
   }, [user])
 
   const handleChange = () => {
-    setChangeName((prev) => !changeName)
+    setChangeName((prev) => !prev)
   }
 
   const handleChangeUsername = (e) => {
-    setUsername((prev) => e.target.value)
+    setUsername(e.currentTarget.value)
   }
 
   const handleSaveUsername = () => {
